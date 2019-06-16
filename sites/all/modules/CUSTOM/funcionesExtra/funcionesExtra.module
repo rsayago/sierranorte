@@ -1,0 +1,13 @@
+<?php
+
+function funcionesExtra_getNodeByTitle($title) {
+  $query = db_select('node', 'n');
+  $result = $query
+  ->fields('n', array('nid'))
+  ->condition('title', $title, '=')
+  ->execute();
+  while ($record = $result->fetchAssoc()) {
+    return $record['nid'];
+  }
+  return 0;
+}
